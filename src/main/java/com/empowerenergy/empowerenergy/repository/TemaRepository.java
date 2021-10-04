@@ -9,7 +9,8 @@ import com.empowerenergy.empowerenergy.model.TemaModel;
 public interface TemaRepository extends JpaRepository<TemaModel, Long> {
 
 
-public List<TemaModel> findAllByTemaContainingIgnoreCase(String descricao);
+public List<TemaModel> findAllByTemaContainingIgnoreCase(String tema);
+
 
 
 }

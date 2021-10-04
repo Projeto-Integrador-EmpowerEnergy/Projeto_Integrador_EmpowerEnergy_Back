@@ -1,5 +1,8 @@
 package com.empowerenergy.empowerenergy.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +25,8 @@ public class TemaModel {
 	
 	private @NotBlank String solarTema;
 	
-
+    //private List<TemaModel> meusTemas = new ArrayList<>();
+	
 	public Long getIdTema() {
 		return idTema;
 	}
@@ -62,6 +66,16 @@ public class TemaModel {
 	public void setSolarTema(String solarTema) {
 		this.solarTema = solarTema;
 	}
+
+	/* public List<TemaModel> getMeusTemas() {
+		return meusTemas;
+	}
+
+	public void setMeusTemas(List<TemaModel> meusTemas) {
+		this.meusTemas = meusTemas;
+	}
+*/
+
 	
 	
 }
