@@ -1,4 +1,4 @@
-package com.empowerenergy.empowrenergy.model;
+package com.empowerenergy.empowerenergy.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -84,3 +84,6 @@ public class UsuarioModel {
 	
 	
 }
+
+	
+	
