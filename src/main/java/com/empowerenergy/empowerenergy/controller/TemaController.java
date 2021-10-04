@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.empowerenergy.empowerenergy.model.Tema;
 import com.empowerenergy.empowerenergy.model.TemaModel;
 import com.empowerenergy.empowerenergy.repository.TemaRepository;
 
@@ -46,8 +47,8 @@ public class TemaController {
 	}
 	*/
 	@GetMapping("/GetTema")
-	public ResponseEntity<List<TemaModel>> GetByTema(@PathVariable String tema){
-		return ResponseEntity.status(200).body(repositorio.findAllByTemaContainingIgnoreCase(tema));
+	public ResponseEntity<List<TemaModel>> GetByTema(@PathVariable Tema categoria){
+		return ResponseEntity.status(200).body(repositorio.findAllByCategoria(categoria));
 												
 	}
     @PostMapping("/salvar")
