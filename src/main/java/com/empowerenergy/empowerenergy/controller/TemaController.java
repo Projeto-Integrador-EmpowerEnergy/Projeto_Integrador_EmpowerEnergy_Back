@@ -10,8 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,7 +37,18 @@ public class TemaController {
 		}
 	}
 
-	@DeleteMapping("/deletar/{id_usuario}")
+    @PostMapping("/salvar")
+    public ResponseEntity<TemaModel> salvar(@Valid @RequestBody TemaModel novoTema) {
+        return ResponseEntity.status(201).body(repositorio.save(novoTema));
+
+    }
+    
+    @PutMapping("/atualizar")
+	public ResponseEntity<TemaModel> atualizar(@Valid @RequestBody TemaModel novoTema) {
+		return ResponseEntity.status(201).body(repositorio.save(novoTema));
+	}
+    
+    @DeleteMapping("/deletar/{id_usuario}")
 	public ResponseEntity<TemaModel> deletar(@PathVariable(value = "id_usuario") Long idUsuario) {
 		Optional<TemaModel> objetoOptional = repositorio.findById(idUsuario);
 		if (objetoOptional.isPresent()) {
@@ -46,10 +58,7 @@ public class TemaController {
 			return ResponseEntity.status(400).build();
 		}
 	}
-
-    @PostMapping("/salvar")
-    public ResponseEntity<TemaModel> salvar(@Valid @RequestBody TemaModel novoTema) {
-        return ResponseEntity.status(201).body(repositorio.save(novoTema));
-
-    }
 }
+	
+
+
