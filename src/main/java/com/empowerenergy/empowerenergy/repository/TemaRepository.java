@@ -6,5 +6,7 @@ import com.empowerenergy.empowerenergy.model.TemaModel;
 
 public interface TemaRepository extends JpaRepository<TemaModel, Long> {
 
+
+
 	
 }
