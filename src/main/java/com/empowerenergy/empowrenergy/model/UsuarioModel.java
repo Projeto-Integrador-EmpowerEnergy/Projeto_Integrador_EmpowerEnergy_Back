@@ -40,7 +40,7 @@ public class UsuarioModel {
 	private int idadeUsuario;
 
 	@OneToMany
-	@JsonIgnoreProperties("usuarioModel")
+	@JsonIgnoreProperties
 	// private
 
 	public Long getIdUsuario() {
