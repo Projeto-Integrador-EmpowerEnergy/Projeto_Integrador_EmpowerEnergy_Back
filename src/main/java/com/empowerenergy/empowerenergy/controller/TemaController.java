@@ -37,11 +37,7 @@ public class TemaController {
 			return ResponseEntity.status(200).body(repositorio.findAll());
 		}
 	}
-<<<<<<< HEAD
-	
-=======
-  
->>>>>>> 88fdbca66fd7bba870185af1444e1e4b93e91098
+
 	@GetMapping("/{id_categoria}")
 	public ResponseEntity<TemaModel> pegarPorId(@PathVariable(value = "id_categoria") Long idCategoria) {
 		java.util.Optional<TemaModel> objetoOptional = repositorio.findById(idCategoria);
@@ -66,11 +62,7 @@ public class TemaController {
 		return ResponseEntity.status(200).body(repositorio.findAllByCategoria(categoria));
 												
 	}
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 88fdbca66fd7bba870185af1444e1e4b93e91098
     @PostMapping("/salvar")
     public ResponseEntity<TemaModel> salvar(@Valid @RequestBody TemaModel novoTema) {
         return ResponseEntity.status(201).body(repositorio.save(novoTema));

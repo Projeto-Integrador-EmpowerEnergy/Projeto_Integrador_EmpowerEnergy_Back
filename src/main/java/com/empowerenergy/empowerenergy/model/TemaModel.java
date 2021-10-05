@@ -25,13 +25,7 @@ public class TemaModel {
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long idTema; 
 	
 	private @Enumerated(EnumType.STRING) Tema categoria;
-<<<<<<< HEAD
 	
-    //private List<TemaModel> meusTemas = new ArrayList<>();
-	
-=======
-		
->>>>>>> 88fdbca66fd7bba870185af1444e1e4b93e91098
 	private @NotBlank String solarTema;
 		
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
@@ -45,11 +39,7 @@ public class TemaModel {
 	public void setTema(List<TemaModel> tema) {
 		this.tema = tema;
 	}
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 88fdbca66fd7bba870185af1444e1e4b93e91098
 	public Long getIdTema() {
 		return idTema;
 	}
@@ -66,15 +56,6 @@ public class TemaModel {
 		this.categoria = categoria;
 	}
 
-	/* public List<TemaModel> getMeusTemas() {
-		return meusTemas;
+
 	}
 
-	public void setMeusTemas(List<TemaModel> meusTemas) {
-		this.meusTemas = meusTemas;
-	}
-*/
-
-	
-	
-}
