@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,12 +24,8 @@ public class TemaModel {
 	
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long idTema; 
 	
-	private @NotBlank String eolicaTema;
-	
-	private @NotBlank String hidricaTema;
-	
-	private @NotBlank String biomassaTema;
-	
+	private @Enumerated(EnumType.STRING) Tema categoria;
+		
 	private @NotBlank String solarTema;
 		
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
@@ -40,7 +39,7 @@ public class TemaModel {
 	public void setTema(List<TemaModel> tema) {
 		this.tema = tema;
 	}
-
+  
 	public Long getIdTema() {
 		return idTema;
 	}
@@ -49,37 +48,23 @@ public class TemaModel {
 		this.idTema = idTema;
 	}
 
-	public String getEolicaTema() {
-		return eolicaTema;
+	public Tema getCategoria() {
+		return categoria;
 	}
 
-	public void setEolicaTema(String eolicaTema) {
-		this.eolicaTema = eolicaTema;
+	public void setCategoria(Tema categoria) {
+		this.categoria = categoria;
 	}
 
-	public String getHidricaTema() {
-		return hidricaTema;
+	/* public List<TemaModel> getMeusTemas() {
+		return meusTemas;
 	}
 
-	public void setHidricaTema(String hidricaTema) {
-		this.hidricaTema = hidricaTema;
+	public void setMeusTemas(List<TemaModel> meusTemas) {
+		this.meusTemas = meusTemas;
 	}
+*/
 
-	public String getBiomassaTema() {
-		return biomassaTema;
-	}
-
-	public void setBiomassaTema(String biomassaTema) {
-		this.biomassaTema = biomassaTema;
-	}
-
-	public String getSolarTema() {
-		return solarTema;
-	}
-
-	public void setSolarTema(String solarTema) {
-		this.solarTema = solarTema;
-	}
 	
 	
 }
