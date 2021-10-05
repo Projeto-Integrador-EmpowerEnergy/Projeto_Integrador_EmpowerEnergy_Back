@@ -47,7 +47,7 @@ public class PostagemController {
 	
 	/* @GetMapping("/{titulo}")
 	public ResponseEntity<PostagemModel> getByTitulo(@PathVariable(value = "titulo") String titulo) {
-		return ResponseEntity<PostagemModel>repositorio.findAllByTituloContainingIgnoreCase(titulo)
+		return PostagemModel>repositorio.findAllByTituloContainingIgnoreCase(titulo)
 				.map(resp -> ResponseEntity.status(200).body(resp)
 				.orElse(ResponseEntity.status(400).build());
 	}*/
