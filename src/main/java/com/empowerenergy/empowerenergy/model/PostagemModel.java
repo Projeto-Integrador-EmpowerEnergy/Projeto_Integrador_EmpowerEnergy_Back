@@ -42,12 +42,12 @@ public class PostagemModel {
 		
 		@ManyToOne
 		@JoinColumn(name = "id_usuario")
-		@JsonIgnoreProperties
+		@JsonIgnoreProperties("postagem")
 		private UsuarioModel usuario;
 	
 		@ManyToOne
 		@JoinColumn(name = "id_tema")
-		@JsonIgnoreProperties
+		@JsonIgnoreProperties("postagem")
 		private TemaModel tema;
 
 		public Long getIdPostagem() {
