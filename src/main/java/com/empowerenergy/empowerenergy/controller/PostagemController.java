@@ -55,10 +55,10 @@ public class PostagemController {
 	}
 
 	@DeleteMapping("/deletar/{id_usuario}")
-	public ResponseEntity<PostagemModel> deletar(@PathVariable(value = "id_usuario") Long idUsuario) {
-		Optional<PostagemModel> objetoOptional = repositorio.findById(idUsuario);
+	public ResponseEntity<PostagemModel> deletar(@PathVariable(value = "id_postagem") Long idPostagem) {
+		Optional<PostagemModel> objetoOptional = repositorio.findById(idPostagem);
 		if (objetoOptional.isPresent()) {
-			repositorio.deleteById(idUsuario);
+			repositorio.deleteById(idPostagem);
 			return ResponseEntity.status(204).build();
 		} else {
 			return ResponseEntity.status(400).build();
