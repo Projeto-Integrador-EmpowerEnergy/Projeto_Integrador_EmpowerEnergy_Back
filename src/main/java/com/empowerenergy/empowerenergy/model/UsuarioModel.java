@@ -44,7 +44,7 @@ public class UsuarioModel {
 	private int idadeUsuario;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("usuario")
+	@JsonIgnoreProperties("tema")
 	private List<PostagemModel> postagem = new ArrayList<>();
 	
 	public List<PostagemModel> getPostagem() {
