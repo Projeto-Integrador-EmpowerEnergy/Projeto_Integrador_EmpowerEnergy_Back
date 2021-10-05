@@ -1,17 +1,18 @@
 package com.empowerenergy.empowerenergy.controller;
 
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,6 +44,14 @@ public class PostagemController {
 	        return repositorio.findById(idPostagem).map(resp -> ResponseEntity.status(200).body(resp))
 	                .orElse(ResponseEntity.status(400).build());
 	    }
+	
+	/* @GetMapping("/{titulo}")
+	public ResponseEntity<PostagemModel> getByTitulo(@PathVariable(value = "titulo") String titulo) {
+		return ResponseEntity<PostagemModel>repositorio.findAllByTituloContainingIgnoreCase(titulo)
+				.map(resp -> ResponseEntity.status(200).body(resp)
+				.orElse(ResponseEntity.status(400).build());
+	}*/
+		
 	@PostMapping("/salvar")
 	public ResponseEntity<PostagemModel> salvar(@Valid @RequestBody PostagemModel novaPostagem){
 		return ResponseEntity.status(201).body(repositorio.save(novaPostagem));

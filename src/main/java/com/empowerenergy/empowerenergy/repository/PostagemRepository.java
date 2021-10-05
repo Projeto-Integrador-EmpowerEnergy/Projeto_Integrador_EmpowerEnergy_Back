@@ -11,6 +11,6 @@ import com.empowerenergy.empowerenergy.model.PostagemModel;
 @Repository
 public interface PostagemRepository extends JpaRepository<PostagemModel, Long> {
 
-	public List<PostagemModel> findAllBytituloContainingIgnoreCase(PostagemModel titulo); //ou tema?
+	public List<PostagemModel> findAllByTituloContainingIgnoreCase(String titulo);
 	
 }
