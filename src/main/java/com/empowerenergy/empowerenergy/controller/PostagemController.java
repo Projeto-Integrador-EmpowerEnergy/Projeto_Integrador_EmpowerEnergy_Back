@@ -63,7 +63,7 @@ public class PostagemController {
 		return ResponseEntity.status(201).body(repositorio.save(novoPostagem));
 	}
 
-	@DeleteMapping("/deletar/{id_usuario}")
+	@DeleteMapping("/deletar/{id_postagem}")
 	public ResponseEntity<PostagemModel> deletar(@PathVariable(value = "id_postagem") Long idPostagem) {
 		Optional<PostagemModel> objetoOptional = repositorio.findById(idPostagem);
 		if (objetoOptional.isPresent()) {
