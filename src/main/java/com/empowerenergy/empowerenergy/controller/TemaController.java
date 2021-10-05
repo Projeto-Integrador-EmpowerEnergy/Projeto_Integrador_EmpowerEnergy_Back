@@ -36,6 +36,16 @@ public class TemaController {
 			return ResponseEntity.status(200).body(repositorio.findAll());
 		}
 	}
+	@GetMapping("/{id_categoria}")
+	public ResponseEntity<TemaModel> pegarPorId(@PathVariable(value = "id_categoria") Long idCategoria) {
+		java.util.Optional<TemaModel> objetoOptional = repositorio.findById(idCategoria);
+
+		if (objetoOptional.isPresent()) {
+			return ResponseEntity.status(200).body(objetoOptional.get());
+		} else {
+			return ResponseEntity.status(204).build();
+		}
+	}
 
     @PostMapping("/salvar")
     public ResponseEntity<TemaModel> salvar(@Valid @RequestBody TemaModel novoTema) {
