@@ -45,6 +45,8 @@ public class PostagemController {
 	                .orElse(ResponseEntity.status(400).build());
 	    }
 	
+	// ###################### NÃO APAGAR POR ENQUANTO (07.10.2021)#######################################
+	
 	/* @GetMapping("/{titulo}")
 	public ResponseEntity<PostagemModel> getByTitulo(@PathVariable(value = "titulo") String titulo) {
 		return ResponseEntity<PostagemModel>repositorio.findAllByTituloContainingIgnoreCase(titulo)
