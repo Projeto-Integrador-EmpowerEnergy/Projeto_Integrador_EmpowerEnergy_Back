@@ -36,13 +36,15 @@ public class PostagemController {
 			return ResponseEntity.status(200).body(repositorio.findAll());
 		}
 	}
-
-	@GetMapping("/{id_postagem}")
-	public ResponseEntity<PostagemModel> getById(@PathVariable(value = "id_postagem") Long idPostagem) {
-		return repositorio.findById(idPostagem).map(resp -> ResponseEntity.status(200).body(resp))
-				.orElse(ResponseEntity.status(400).build());
-	}
-
+		
+	@GetMapping("/{id_postagem}")	
+	 public ResponseEntity<PostagemModel> getById(@PathVariable(value = "id_postagem") Long idPostagem) {
+	        return repositorio.findById(idPostagem).map(resp -> ResponseEntity.status(200).body(resp))
+	                .orElse(ResponseEntity.status(400).build());
+	    }
+	
+	// ###################### NÃO APAGAR POR ENQUANTO (07.10.2021)#######################################
+	
 	/*
 	 * @GetMapping("/{titulo}") public ResponseEntity<PostagemModel>
 	 * getByTitulo(@PathVariable(value = "titulo") String titulo) { return
@@ -50,9 +52,7 @@ public class PostagemController {
 	 * .map(resp -> ResponseEntity.status(200).body(resp)
 	 * .orElse(ResponseEntity.status(400).build()); }
 	 */
-
-
-
+	
 	@PostMapping("/salvar")
 	public ResponseEntity<PostagemModel> salvar(@Valid @RequestBody PostagemModel novaPostagem) {
 		return ResponseEntity.status(201).body(repositorio.save(novaPostagem));
