@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.empowerenergy.empowerenergy.model.UsuarioModel;
-import com.empowerenergy.empowerenergy.model.UsuarioModel;
 import com.empowerenergy.empowerenergy.repository.UsuarioRepository;
 
 @RestController
