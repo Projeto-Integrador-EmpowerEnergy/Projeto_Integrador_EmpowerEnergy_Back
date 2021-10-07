@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.empowerenergy.empowerenergy.model.PostagemModel;
 import com.empowerenergy.empowerenergy.repository.PostagemRepository;
 
-
 @RestController
 @RequestMapping("/api/v1/postagem")
 @CrossOrigin("*")
@@ -28,13 +27,12 @@ public class PostagemController {
 
 	@Autowired
 	private PostagemRepository repositorio;
-	
+
 	@GetMapping("/todos")
-	public ResponseEntity<List<PostagemModel>> getAll(){
-		if(repositorio.findAll().isEmpty()) {
+	public ResponseEntity<List<PostagemModel>> getAll() {
+		if (repositorio.findAll().isEmpty()) {
 			return ResponseEntity.status(204).build();
-		}
-		else {
+		} else {
 			return ResponseEntity.status(200).body(repositorio.findAll());
 		}
 	}
@@ -47,19 +45,20 @@ public class PostagemController {
 	
 	// ###################### NÃO APAGAR POR ENQUANTO (07.10.2021)#######################################
 	
-	/* @GetMapping("/{titulo}")
-	public ResponseEntity<PostagemModel> getByTitulo(@PathVariable(value = "titulo") String titulo) {
-		return ResponseEntity<PostagemModel>repositorio.findAllByTituloContainingIgnoreCase(titulo)
-				.map(resp -> ResponseEntity.status(200).body(resp)
-				.orElse(ResponseEntity.status(400).build());
-	}*/
-		
-	@PostMapping("/salvar")
-	public ResponseEntity<PostagemModel> salvar(@Valid @RequestBody PostagemModel novaPostagem){
-		return ResponseEntity.status(201).body(repositorio.save(novaPostagem));
-		
-	}
+	/*
+	 * @GetMapping("/{titulo}") public ResponseEntity<PostagemModel>
+	 * getByTitulo(@PathVariable(value = "titulo") String titulo) { return
+	 * PostagemModel>repositorio.findAllByTituloContainingIgnoreCase(titulo)
+	 * .map(resp -> ResponseEntity.status(200).body(resp)
+	 * .orElse(ResponseEntity.status(400).build()); }
+	 */
 	
+	@PostMapping("/salvar")
+	public ResponseEntity<PostagemModel> salvar(@Valid @RequestBody PostagemModel novaPostagem) {
+		return ResponseEntity.status(201).body(repositorio.save(novaPostagem));
+
+	}
+
 	@PutMapping("/atualizar")
 	public ResponseEntity<PostagemModel> atualizar(@Valid @RequestBody PostagemModel novoPostagem) {
 		return ResponseEntity.status(201).body(repositorio.save(novoPostagem));
