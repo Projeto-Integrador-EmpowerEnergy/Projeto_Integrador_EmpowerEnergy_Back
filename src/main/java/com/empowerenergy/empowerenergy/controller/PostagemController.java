@@ -43,6 +43,5 @@ public class PostagemController {
 	@PostMapping("/salvar")
 	public ResponseEntity<PostagemModel> salvar(@Valid @RequestBody PostagemModel novaPostagem){
 		return ResponseEntity.status(201).body(repositorio.save(novaPostagem));
-		
-	}
+		}
 }
