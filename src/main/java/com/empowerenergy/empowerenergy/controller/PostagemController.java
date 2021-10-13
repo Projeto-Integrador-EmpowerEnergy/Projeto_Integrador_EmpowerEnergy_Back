@@ -74,4 +74,5 @@ public class PostagemController {
 			return ResponseEntity.status(400).build();
 		}
 	}
+
 }
