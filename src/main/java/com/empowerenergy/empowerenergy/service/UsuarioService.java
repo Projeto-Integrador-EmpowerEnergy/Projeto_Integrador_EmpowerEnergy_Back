@@ -18,13 +18,24 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 
-	public UsuarioModel CadastrarUsuario(UsuarioModel nomeUsuario) {
+	/*public UsuarioModel CadastrarUsuario(UsuarioModel nomeUsuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
 		String senhaEncoder = encoder.encode(nomeUsuario.getSenhaUsuario());
         nomeUsuario.setSenhaUsuario(senhaEncoder);
 		
 		return repository.save(nomeUsuario);
+
+	}*/
+	
+	public Optional<Object> CadastrarUsuario(UsuarioModel usuarioParaCadastrar) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		return repository.findByEmailUsuario(usuarioParaCadastrar.getEmailUsuario()).map(usuarioExistente -> {
+			return Optional.empty();
+		}).orElseGet(() -> {
+			usuarioParaCadastrar.setSenhaUsuario(encoder.encode(usuarioParaCadastrar.getSenhaUsuario()));
+			return Optional.ofNullable(repository.save(usuarioParaCadastrar));
+		});
 
 	}
 

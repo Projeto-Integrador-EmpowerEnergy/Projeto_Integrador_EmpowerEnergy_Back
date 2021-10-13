@@ -11,5 +11,6 @@ import com.empowerenergy.empowerenergy.model.UsuarioModel;
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
 
 	public Optional<UsuarioModel> findByNomeUsuario(String nomeUsuario);
-
+	
+	public Optional<UsuarioModel> findByEmailUsuario(String emailUsuario);
 }
