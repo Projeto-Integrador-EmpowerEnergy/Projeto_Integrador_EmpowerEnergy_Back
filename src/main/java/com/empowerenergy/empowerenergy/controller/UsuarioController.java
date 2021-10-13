@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.empowerenergy.empowerenergy.model.UsuarioModel;
 import com.empowerenergy.empowerenergy.repository.UsuarioRepository;
@@ -78,9 +79,19 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 
-	@PostMapping("/cadastrar")
-	public ResponseEntity<UsuarioModel> Post(@Valid @RequestBody UsuarioModel usuario) {
+	/*@PostMapping("/cadastrar")
+	public ResponseEntity<Object> Post(@Valid @RequestBody UsuarioModel usuario) {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(usuarioService.CadastrarUsuario(usuario));
+	}*/
+	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Object> salvar(@Valid @RequestBody UsuarioModel usuario) {
+		return usuarioService.CadastrarUsuario(usuario).map(resp -> ResponseEntity.status(201).body(resp))
+				.orElseThrow(() -> {
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+							"Email existente, cadastre outro email!.");
+				});
+
 	}
 }
