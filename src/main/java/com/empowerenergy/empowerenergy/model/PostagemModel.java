@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,117 +19,116 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-	/**
-	 * Classe espelho da tabela postagem no banco db_empowerenergy.
-	 * 
-	 * @author Lucas
-	 * @since 1.0
-	 *
-	 */
+/**
+ * Classe espelho da tabela postagem no banco db_empowerenergy.
+ * 
+ * @author Lucas
+ * @since 1.0
+ *
+ */
 
 @Entity
 @Table(name = "tb_postagem")
 public class PostagemModel {
 
-		private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long IdPostagem;
-		private @NotBlank String titulo;
-		private @NotBlank String descricao;
-		private String imagem;
-		private String localizacao;
-		private String mencao;
-		private String hashtag;
-		
-		@JsonFormat(pattern = "dd-MM-yyyy")
-		private LocalDate dataPostagem = LocalDate.now();
-		
-		@ManyToOne
-		@JoinColumn(name = "id_usuario")
-		@JsonIgnoreProperties
-		private UsuarioModel usuario;
-	
-		@ManyToOne
-		@JoinColumn(name = "id_tema")
-		@JsonIgnoreProperties
-		private TemaModel tema;
+	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long IdPostagem;
+	private @NotBlank String titulo;
+	private @NotBlank String descricao;
+	private String imagem;
+	private String localizacao;
+	private String mencao;
+	private String hashtag;
 
-		public Long getIdPostagem() {
-			return IdPostagem;
-		}
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dataPostagem = LocalDate.now();
 
-		public void setIdPostagem(Long idPostagem) {
-			IdPostagem = idPostagem;
-		}
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
+	@JsonIgnoreProperties("postagem")
+	private UsuarioModel usuario;
 
-		public String getTitulo() {
-			return titulo;
-		}
+	@ManyToOne
+	@JoinColumn(name = "id_tema")
+	@JsonIgnoreProperties("postagem")
+	private TemaModel tema;
 
-		public void setTitulo(String titulo) {
-			this.titulo = titulo;
-		}
+	public Long getIdPostagem() {
+		return IdPostagem;
+	}
 
-		public String getDescricao() {
-			return descricao;
-		}
+	public void setIdPostagem(Long idPostagem) {
+		IdPostagem = idPostagem;
+	}
 
-		public void setDescricao(String descricao) {
-			this.descricao = descricao;
-		}
+	public String getTitulo() {
+		return titulo;
+	}
 
-		public LocalDate getDataPostagem() {
-			return dataPostagem;
-		}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-		public void setDataPostagem(LocalDate dataPostagem) {
-			this.dataPostagem = dataPostagem;
-		}
+	public String getDescricao() {
+		return descricao;
+	}
 
-		public String getImagem() {
-			return imagem;
-		}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-		public void setImagem(String imagem) {
-			this.imagem = imagem;
-		}
+	public LocalDate getDataPostagem() {
+		return dataPostagem;
+	}
 
-		public String getLocalizacao() {
-			return localizacao;
-		}
+	public void setDataPostagem(LocalDate dataPostagem) {
+		this.dataPostagem = dataPostagem;
+	}
 
-		public void setLocalizacao(String localizacao) {
-			this.localizacao = localizacao;
-		}
+	public String getImagem() {
+		return imagem;
+	}
 
-		public String getMencao() {
-			return mencao;
-		}
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 
-		public void setMencao(String mencao) {
-			this.mencao = mencao;
-		}
+	public String getLocalizacao() {
+		return localizacao;
+	}
 
-		public String getHashtag() {
-			return hashtag;
-		}
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
+	}
 
-		public void setHashtag(String hashtag) {
-			this.hashtag = hashtag;
-		}
+	public String getMencao() {
+		return mencao;
+	}
 
-		public UsuarioModel getUsuario() {
-			return usuario;
-		}
+	public void setMencao(String mencao) {
+		this.mencao = mencao;
+	}
 
-		public void setUsuario(UsuarioModel usuario) {
-			this.usuario = usuario;
-		}
+	public String getHashtag() {
+		return hashtag;
+	}
 
-		public TemaModel getTema() {
-			return tema;
-		}
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
+	}
 
-		public void setTema(TemaModel tema) {
-			this.tema = tema;
-		}
-		
+	public UsuarioModel getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioModel usuario) {
+		this.usuario = usuario;
+	}
+
+	public TemaModel getTema() {
+		return tema;
+	}
+
+	public void setTema(TemaModel tema) {
+		this.tema = tema;
+	}
 }
