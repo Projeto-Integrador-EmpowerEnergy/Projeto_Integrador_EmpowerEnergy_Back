@@ -37,7 +37,7 @@ public class SwaggerConfig {
 	}
 
 	private static Contact contact() {
-		return new Contact("Leonardo Azevedo", "https://github.com/Projeto-Integrador-EmpowerEnergy/Projeto_Integrador_EmpowerEnergy.git", "lleonardo.azevedo@gmail.com");
+		return new Contact("Projeto Integrador EmpowerEnergy", "https://github.com/Projeto-Integrador-EmpowerEnergy/Projeto_Integrador_EmpowerEnergy.git", "lleonardo.azevedo@gmail.com");
 	}
 
 	private static List<Response> responseMessage() {
