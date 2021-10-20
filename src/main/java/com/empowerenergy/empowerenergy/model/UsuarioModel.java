@@ -25,6 +25,7 @@ public class UsuarioModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ApiModelProperty(hidden = true)
 	private long idUsuario;
 	
 	@NotBlank
@@ -48,15 +49,18 @@ public class UsuarioModel {
 	private int idadeUsuario;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("tema")
-	private List<PostagemModel> postagem = new ArrayList<>();
-	
-	public List<PostagemModel> getPostagem() {
-		return postagem;
+	@JsonIgnoreProperties("usuario")
+	@ApiModelProperty(hidden = true)
+	private List<PostagemModel> minhasPostagens = new ArrayList<>();
+
+	public List<PostagemModel> getMinhasPostagens() {
+		return minhasPostagens;
 	}
-	public void setPostagem(List<PostagemModel> postagem) {
-		this.postagem = postagem;
+
+	public void setMinhasPostagens(List<PostagemModel> minhasPostagens) {
+		this.minhasPostagens = minhasPostagens;
 	}
+
 	public long getIdUsuario() {
 		return idUsuario;
 	}

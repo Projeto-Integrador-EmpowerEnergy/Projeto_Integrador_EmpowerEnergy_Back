@@ -18,6 +18,7 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Classe espelho da tabela postagem no banco db_empowerenergy.
@@ -44,12 +45,13 @@ public class PostagemModel {
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
-	@JsonIgnoreProperties("postagem")
+	@JsonIgnoreProperties("minhasPostagens")
 	private UsuarioModel usuario;
 
 	@ManyToOne
 	@JoinColumn(name = "id_tema")
-	@JsonIgnoreProperties("postagem")
+	@JsonIgnoreProperties("postagens")
+	//@ApiModelProperty(access = "tema.idTema", hidden = true)
 	private TemaModel tema;
 
 	public Long getIdPostagem() {
