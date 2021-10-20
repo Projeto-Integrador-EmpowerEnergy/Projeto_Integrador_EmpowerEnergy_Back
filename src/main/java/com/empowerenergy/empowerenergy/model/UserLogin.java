@@ -9,7 +9,7 @@ public class UserLogin {
 
 	private String nome;
 	
-	private String usuario;
+	private String email;
 	
 	private String senha;
 	
@@ -31,12 +31,12 @@ public class UserLogin {
 		this.nome = nome;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setEmail(String usuario) {
+		this.email = usuario;
 	}
 
 	public String getSenha() {

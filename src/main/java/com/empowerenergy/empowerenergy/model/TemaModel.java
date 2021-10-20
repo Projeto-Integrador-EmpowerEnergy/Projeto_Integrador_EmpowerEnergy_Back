@@ -15,12 +15,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "tb_tema")
 public class TemaModel {
 
-	
+	@ApiModelProperty(hidden = true)
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long idTema; 
 
 	private @Enumerated(EnumType.STRING) Tema categoria;
@@ -28,7 +29,8 @@ public class TemaModel {
 		
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("tema")
-	private List<TemaModel> tema = new ArrayList<>();
+	@ApiModelProperty(hidden = true)
+	private List<PostagemModel> postagens = new ArrayList<>();
 
 
 	public Long getIdTema() {
@@ -51,14 +53,12 @@ public class TemaModel {
 	}
 
 
-	public List<TemaModel> getTema() {
-		return tema;
+	public List<PostagemModel> getPostagens() {
+		return postagens;
 	}
 
-
-	public void setTema(List<TemaModel> tema) {
-		this.tema = tema;
+	public void setPostagens(List<PostagemModel> postagens) {
+		this.postagens = postagens;
 	}
-
-	}
+}
 
