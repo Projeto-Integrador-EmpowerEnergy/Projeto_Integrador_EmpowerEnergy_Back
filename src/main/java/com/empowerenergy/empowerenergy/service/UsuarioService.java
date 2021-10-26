@@ -41,19 +41,19 @@ public class UsuarioService {
 
 	public Optional<UserLogin> Logar(Optional<UserLogin> user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        Optional<UsuarioModel> nomeUsuario = repository.findByNomeUsuario(user.get().getNome());
+        Optional<UsuarioModel> optionalUsuario = repository.findByEmailUsuario(user.get().getEmail());
 
-        if(nomeUsuario.isPresent()){
-            if(encoder.matches(user.get().getSenha(), nomeUsuario.get().getSenhaUsuario())) {
-                String auth = user.get().getNome() + ":" + user.get().getSenha();
+        if(optionalUsuario.isPresent()){
+            if(encoder.matches(user.get().getSenha(), optionalUsuario.get().getSenhaUsuario())) {
+                String auth = user.get().getEmail() + ":" + user.get().getSenha();
                 byte[] encodeAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
                 String authHeader = "Basic " + new String(encodeAuth);
 
                 user.get().setToken(authHeader);
-                user.get().setNome(nomeUsuario.get().getNomeUsuario());
-                user.get().setId(nomeUsuario.get().getIdUsuario());
-                user.get().setSenha(nomeUsuario.get().getSenhaUsuario());
-                user.get().setUsuario(nomeUsuario.get().getEmailUsuario());
+                user.get().setNome(optionalUsuario.get().getNomeUsuario());
+                user.get().setId(optionalUsuario.get().getIdUsuario());
+                user.get().setSenha(optionalUsuario.get().getSenhaUsuario());
+                user.get().setEmail(optionalUsuario.get().getEmailUsuario());
 
                 return user;
             }
