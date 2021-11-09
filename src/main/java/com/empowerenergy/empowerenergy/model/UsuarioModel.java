@@ -47,6 +47,10 @@ public class UsuarioModel {
 	private String senhaUsuario;
 
 	private int idadeUsuario;
+
+	private String fotoUsuario;
+
+	private String tipoUsuario;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
@@ -97,11 +101,22 @@ public class UsuarioModel {
 	public void setIdadeUsuario(int idadeUsuario) {
 		this.idadeUsuario = idadeUsuario;
 	}
-	
-	
-	
-	
-	
+
+	public String getFotoUsuario() {
+		return fotoUsuario;
+	}
+
+	public void setFotoUsuario(String fotoUsuario) {
+		this.fotoUsuario = fotoUsuario;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 }
 
 	

@@ -17,16 +17,6 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository repository;
-
-	/*public UsuarioModel CadastrarUsuario(UsuarioModel nomeUsuario) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
-		String senhaEncoder = encoder.encode(nomeUsuario.getSenhaUsuario());
-        nomeUsuario.setSenhaUsuario(senhaEncoder);
-		
-		return repository.save(nomeUsuario);
-
-	}*/
 	
 	public Optional<Object> CadastrarUsuario(UsuarioModel usuarioParaCadastrar) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -54,6 +44,8 @@ public class UsuarioService {
                 user.get().setId(optionalUsuario.get().getIdUsuario());
                 user.get().setSenha(optionalUsuario.get().getSenhaUsuario());
                 user.get().setEmail(optionalUsuario.get().getEmailUsuario());
+                user.get().setFoto(optionalUsuario.get().getFotoUsuario());
+                user.get().setTipo(optionalUsuario.get().getTipoUsuario());
 
                 return user;
             }

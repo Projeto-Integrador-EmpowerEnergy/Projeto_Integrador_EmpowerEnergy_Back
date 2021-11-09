@@ -15,6 +15,10 @@ public class UserLogin {
 	
 	private String token;
 
+	private String foto;
+
+	private String tipo;
+
 	public long getId() {
 		return Id;
 	}
@@ -54,6 +58,20 @@ public class UserLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
-	
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 }
